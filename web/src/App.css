@@ -1,0 +1,17 @@
+.App {
+  /* text-align: center; */
+  background-color: #FFFFF0;
+}
+
+.frag-container {
+  background-color: #FFFFF0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+  font-size: calc(2px + 2vmin);
+  font-family: Courier New,Courier,monospace;
+  color: black;
+  margin-top: 80px;
+}

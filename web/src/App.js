@@ -46,7 +46,6 @@ const App = () => {
   return (
     <div className="App">
       <div className="frag-container">
-        {fragment}
         {fragContainer}
         <p>{partialFrag}</p>
       </div>

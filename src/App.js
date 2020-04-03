@@ -62,8 +62,7 @@ const App = () => {
 
   const styles = {
     cursor: {
-      // fontWeight: 'bold',
-      marginTop: '12px',
+      marginTop: '1rem',
       fontSize: 25,
       visibility: cursorVisibility
     }

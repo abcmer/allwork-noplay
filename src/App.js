@@ -72,7 +72,10 @@ const App = () => {
     }
   }
   return (
-    <div className="App">      
+    <div className="App">
+      <form>
+        <input type="text" id="fname" name="fname" autofocus={true}/>
+      </form>  
       <div className="frag-container">
         {fragContainer}
         <div className='partial-frag'>

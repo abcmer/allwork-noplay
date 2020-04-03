@@ -15,3 +15,9 @@
   color: black;
   margin-top: 80px;
 }
+
+.partial-frag {
+  display: flex;
+  align-content: center;
+}
+

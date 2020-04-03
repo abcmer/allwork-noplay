@@ -1,10 +1,11 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 import './App.css';
 
 const App = () => {
   const [keystrokeCount, setkeystrokeCount] = useState(1)
   const [fragContainer, setfragContainer] = useState([])
   const [partialFrag, setPartialFrag] = useState('')
+  const [cursorVisibility, setCursorVisibility] = useState('visible')
   const [name] = useState('Jack')
   const fragment = `All work and no play makes ${name} a dull boy`
   const getFullFragCount = () => Math.floor(keystrokeCount / fragment.length)
@@ -33,21 +34,48 @@ const App = () => {
     setPartialFrag(getPartialFrag())
   }
 
-  // Bind and unbind events
+  const toggleCursorVisiblity = useCallback(() => {
+    if (cursorVisibility === 'hidden') {
+      setCursorVisibility('visible')
+    } else {
+      setCursorVisibility('hidden')
+    }
+  })
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      toggleCursorVisiblity()
+    }, 500);
+    return () => clearInterval(interval);
+  }, [toggleCursorVisiblity]);
+
   useEffect(() => {
     window.addEventListener("keydown", onDown)
     window.addEventListener("keyup", onUp)
     return () => {
         window.removeEventListener("keydown", onDown)
         window.removeEventListener("keyup", onUp)
+        
     }
-  }, [keystrokeCount, onUp])
+    
+  }, [keystrokeCount, onUp, toggleCursorVisiblity])
 
+  const styles = {
+    cursor: {
+      // fontWeight: 'bold',
+      marginTop: '12px',
+      fontSize: 25,
+      visibility: cursorVisibility
+    }
+  }
   return (
     <div className="App">
       <div className="frag-container">
         {fragContainer}
-        <p>{partialFrag}</p>
+        <div className='partial-frag'>
+          <p>{partialFrag}</p>
+          <p style={styles.cursor}>|</p>
+          </div>
       </div>
     </div>
   );

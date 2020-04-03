@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/3459232c-c10e-4371-8dc0-a3318ea5c464/deploy-status)](https://app.netlify.com/sites/focused-bassi-80e077/deploys)
+
 # All Work No Play
 
 All work and no play makes Adam a dull boy

@@ -41,7 +41,7 @@ const App = () => {
         window.removeEventListener("keydown", onDown)
         window.removeEventListener("keyup", onUp)
     }
-  }, [keystrokeCount])
+  }, [keystrokeCount, onUp])
 
   return (
     <div className="App">

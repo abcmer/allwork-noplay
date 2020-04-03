@@ -1,13 +1,23 @@
 import React, {useState, useEffect, useCallback} from 'react';
 import './App.css';
+var qs = require('qs');
 
 const App = () => {
   const [keystrokeCount, setkeystrokeCount] = useState(1)
   const [fragContainer, setfragContainer] = useState([])
   const [partialFrag, setPartialFrag] = useState('')
-  const [cursorVisibility, setCursorVisibility] = useState('visible')
-  const [name] = useState('Jack')
-  const fragment = `All work and no play makes ${name} a dull boy`
+  const [cursorVisibility, setCursorVisibility] = useState('visible')  
+  const [name, setName] = useState('Jack')
+  const [gender, setGender] = useState('boy')
+
+  useEffect(() => {
+    setName(qs.parse(window.location.search, { ignoreQueryPrefix: true }).name || 'Jack')
+    const genderValue = qs.parse(window.location.search, { ignoreQueryPrefix: true }).gender || '';
+    const gender = ['BOY', 'MALE', 'M'].includes(genderValue.toUpperCase()) ? 'boy' : ['GIRL', 'G', 'FEMALE', 'F'].includes(genderValue.toUpperCase()) ? 'girl' : 'boy'
+    setGender(gender)
+  }, [])
+
+  const fragment = `All work and no play makes ${name} a dull ${gender}`
 
   const getFullFragCount = useCallback(() => Math.floor(keystrokeCount / fragment.length), [fragment.length, keystrokeCount])
 
@@ -50,10 +60,8 @@ const App = () => {
   useEffect(() => {
     window.addEventListener("keyup", onUp)
     return () => {
-        window.removeEventListener("keyup", onUp)
-        
+        window.removeEventListener("keyup", onUp)        
     }
-    
   }, [keystrokeCount, onUp, toggleCursorVisiblity])
 
   const styles = {

@@ -8,13 +8,15 @@ const App = () => {
   const [cursorVisibility, setCursorVisibility] = useState('visible')
   const [name] = useState('Jack')
   const fragment = `All work and no play makes ${name} a dull boy`
-  const getFullFragCount = () => Math.floor(keystrokeCount / fragment.length)
-  const getPartialFrag = () => {
+
+  const getFullFragCount = useCallback(() => Math.floor(keystrokeCount / fragment.length), [fragment.length, keystrokeCount])
+
+  const getPartialFrag = useCallback(() => {
     const remainder = keystrokeCount % fragment.length
     return fragment.substr(0, remainder)
-  }
+  }, [fragment, keystrokeCount])
 
-  const getFragContainer = () => {
+  const getFragContainer = useCallback(() => {
     let fragContainer = []
     var i;
     for (i=0; i < getFullFragCount(); i++ ) {
@@ -22,17 +24,13 @@ const App = () => {
     }
     console.log('fragContainer', fragContainer)
     return fragContainer
-  }
+  }, [fragment, getFullFragCount])
 
-  // Event handlers
-  const onDown = event => {
-  }
-
-  const onUp = event => {
+  const onUp = useCallback(() => {
     setkeystrokeCount(keystrokeCount+1)
     setfragContainer(getFragContainer())
-    setPartialFrag(getPartialFrag())
-  }
+    setPartialFrag(getPartialFrag())    
+  }, [getFragContainer, getPartialFrag, keystrokeCount])
 
   const toggleCursorVisiblity = useCallback(() => {
     if (cursorVisibility === 'hidden') {
@@ -40,7 +38,7 @@ const App = () => {
     } else {
       setCursorVisibility('hidden')
     }
-  })
+  }, [cursorVisibility])
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -50,10 +48,8 @@ const App = () => {
   }, [toggleCursorVisiblity]);
 
   useEffect(() => {
-    window.addEventListener("keydown", onDown)
     window.addEventListener("keyup", onUp)
     return () => {
-        window.removeEventListener("keydown", onDown)
         window.removeEventListener("keyup", onUp)
         
     }
@@ -68,7 +64,7 @@ const App = () => {
     }
   }
   return (
-    <div className="App">
+    <div className="App">      
       <div className="frag-container">
         {fragContainer}
         <div className='partial-frag'>

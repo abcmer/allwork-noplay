@@ -1,24 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+This project has been migrated to [Next.js](https://nextjs.org) 16.x (App Router).
 
-## Getting Started
+## Local Setup
 
-First, run the development server:
+### Prerequisites
+
+- Node.js v20 (use [nvm](https://github.com/nvm-sh/nvm) to manage versions)
+
+```bash
+nvm use 20
+```
+
+### Install dependencies
+
+```bash
+npm install
+```
+
+### Run the development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Other scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build   # production build
+npm run start   # start production server
+npm run lint    # run ESLint
+```
+
+### Project structure
+
+- `src/app/page.tsx` — server component entry point
+- `src/components/App.tsx` — main client component
+- `src/app/globals.css` — global styles
 
 ## Learn More
 

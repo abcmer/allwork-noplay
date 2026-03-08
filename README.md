@@ -1,34 +1,54 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/3459232c-c10e-4371-8dc0-a3318ea5c464/deploy-status)](https://app.netlify.com/sites/focused-bassi-80e077/deploys)
+This project has been migrated to [Next.js](https://nextjs.org) 16.x (App Router).
 
-# All Work No Play
+## Local Setup
 
-All work and no play makes Adam a dull boy
+### Prerequisites
 
-## Get to work on your new novel
+- Node.js v20 (use [nvm](https://github.com/nvm-sh/nvm) to manage versions)
 
-Clone this repository
-```
-git clone https://github.com/abcmer/allwork-noplay.git
-```
-
-Install Dependencies
-```
-cd allwork-noplay
-yarn install
+```bash
+nvm use 20
 ```
 
-Start dev server
+### Install dependencies
+
+```bash
+npm install
 ```
-yarn start
+
+### Run the development server
+
+```bash
+npm run dev
 ```
 
-Navigate to http://localhost:3000 and start typing.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-## Project Dependencies
+### Other scripts
 
-* [Yarn](https://yarnpkg.com/)
+```bash
+npm run build   # production build
+npm run start   # start production server
+npm run lint    # run ESLint
+```
 
-## Acknowledgments
+### Project structure
 
-* Inspired by the film [The Shining](https://www.youtube.com/watch?v=4lQ_MjU4QHw)
+- `src/app/page.tsx` — server component entry point
+- `src/components/App.tsx` — main client component
+- `src/app/globals.css` — global styles
 
+## Learn More
+
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

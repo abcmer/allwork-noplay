@@ -1,9 +1,0 @@
-{
-  "short_name": "All Work No Play",
-  "name": "All work and no play makes one dull",
-  "icons": [],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
-}
